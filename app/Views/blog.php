@@ -4,25 +4,51 @@
 <?=$this->section('content')?>
 
 <div class="container">
+    <h2 style="text-decoration: underline; text-align:center;">Blog</h2>
     <div class="page_cover_img">
         <img src="<?= base_url('images/9e687619650116619f0d6affdd31fa6b.jpg') ?>" alt="cover images">
     </div>
 
     <div class="blog_block">
         <div class="row">
-
             <div class="col-md-8">
                 <div class="blog_flex">
-                    <div class="card" style="width: 20rem; margin:10px">
-                        <img class="card-img-top" src="<?= base_url('images/bangla.png') ?>" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
 
-                    <div class="card" style="width: 20rem; margin:10px">
+                    <?php
+                    
+                    if(count($data) > 0){
+                        foreach($data as $value){?>
+                            <div class="card" style="width: 20rem; margin:10px">
+                                <img class="card-img-top" height="200px" src="<?= base_url('uploads/'. $value->article_image) ?>" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title btn btn-sm btn-primary"><?= $value->category_name ?></h5>
+                                    <h6>
+                                        <a href="">
+                                            <?= $value->article_title ?>
+                                        </a>
+                                    </h6>
+                                    <p class="card-text"><?= $value->article_description ?></p>
+                                    <div class="blog_card_image">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAAB5CAMAAADszSiHAAAASFBMVEX39/eDg4ONjY3x8fH6+vr///9/f398fHx5eXmWlpbr6+t2dnaGhobIyMjl5eXg4ODZ2dmqqqrQ0NC2tracnJy/v7+kpKSwsLDfxd+7AAADiElEQVR4nO2b2XLbMAxFSQkktVm75P//09KKG9udVARi6jLt6D758Qw2gQCs1KlTp/4HEZHxog/5H6mBbkgq78dlGta13DQP01iptGRE/TVzReGctVZvstYVbm0TmozUaIs7zatsPbcmFVU1u6+YPsD0ksaT1NovLfVbRZnCYNT/3VS/PTnC7UVVs2urTW5Bc5ksTOUduWD9SJeCQaU12I95xqLSusmBVNTxjOXdeAG60UyhNPxUiaNSVHKptG5x0VU1bCqHC3rqONXhjjXBgotGdmhpO8OwBBHvhcMa+E7UNYpKmfJnYnFr/IbVoVLR1BKsHlYhJFgFCotyCZa7oLCqE+ufx1L0I0NeGQEVsm5df2SVl3QQusBhtRIv4pp59sPH91srDkvQ2TjcC5ZGgbWmFfXIMKsg5G2Nqqei7tS/YFFYol4e19lI6pZ2FYbKvxMFVMDnvqBuaTvAmmYzC57VsMaGPXW7CddB+I8iH8sBB1z84LIDEIvYHRdwkHSbynP75gZVtTYZprXcFToCp5HJVWE3BjRwkhG/X6E1bC8L3mLcsLpw1GfIZcFdJthGIPv4B1ZwJghrAF+wgs1ggfscPkR9yFrQPdSDK+BFNyXaVu/vWLJERwdm2jOXxc1yX0XjbqVPEfAbVr+LBVzZvWK1e4W+adNQKVXtVa4mlRPVvOdD5GTrRbvG8l0NuNe6yyz7WKnKaegRm6KvoTy4SK/xN0nUuvDYJitzcCufszawbsZSKeZeuEA+yEzHupO62ws1DKSJcVP2yZVBqj2ZseTPa7ysu9LhnjRt5iRz5s1gesmPBCPKLwL/PYFlS0UH+ZJMN1mR/57B3NAf4EuiapS771nWNbFNRqodMskw/msVzdCrWGTe9peyfsdQD9k68+EfAYxUN9i3vPcnmVv7NxPTG3ycGd9kKZg32fd96VPv6r6bevsqvMm+lZjvp96+tsSUfi9J9WuE1NuXa+aLJDFJLU2k1NuXLeyV3SlSe7ihnsgct8MITYgiizkGC8/T4op5VU8XnAtvYk5+ZRvyCCpZwSU6K40h3rqKu2aKJubcUHLMFkOsf7gEZnwHyGaMmKfAIOYAcS7iOKuvyGLduwj+aBFJnElYDqfSOjxBkdw4RJMNVi7JRUg0hYNLdjMWSeH/txh8xGvGZzENVhaKrRNLhpUg5G0Ya80SKHxAmCdREOvUqVMJ9AsYujF1/ZStTQAAAABJRU5ErkJggg==" alt="">
+                                        <div class="blog_card_title">
+                                            <h4>Admin/Admin</h4>
+                                            <p>
+                                                <span>Oct 15, 2022 03:14 PM</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    <?php }
+                    } else{ ?>
+                        <div>
+                            <p>No data found</p>
+                        </div>
+                    <?php }
+                    
+                    ?>
+
+                    <!-- <div class="card" style="width: 20rem; margin:10px">
                         <img class="card-img-top" src="<?= base_url('images/bangla.png') ?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
@@ -45,7 +71,7 @@
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -53,7 +79,7 @@
 
                 <div class="menu_search">
                     <div class="search_form">
-                        <form action="" method="post">
+                        <form action="<?= base_url('search') ?>" method="post">
                             <input type="text" name="search" placeholder="Search...">
                             <input type="submit" name="submit" value="Search">
                         </form>

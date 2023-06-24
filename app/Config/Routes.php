@@ -33,6 +33,9 @@ $routes->get('/', 'Home::index');
 
 $routes->get('/blog', 'BlogController::index');
 
+//Search Functionality
+$routes->post('/search', 'BlogController::search');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
