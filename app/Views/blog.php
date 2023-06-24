@@ -23,7 +23,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title btn btn-sm btn-primary"><?= $value->category_name ?></h5>
                                     <h6>
-                                        <a href="">
+                                        <a href="<?= base_url('blog_show/'. $value->id) ?>">
                                             <?= $value->article_title ?>
                                         </a>
                                     </h6>

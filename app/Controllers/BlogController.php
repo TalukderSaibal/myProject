@@ -27,6 +27,13 @@ class BlogController extends BaseController
         }
     }
 
+    //Blog show method
+    public function blogShow($id){
+        $data = $this->blogModel->findAll($id);
+
+        return view('blogView', ['data' => $data]);
+    }
+
     //Search Method
     public function search(){
         $searchName = $this->request->getPost('search');

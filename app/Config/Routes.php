@@ -32,6 +32,7 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 
 $routes->get('/blog', 'BlogController::index');
+$routes->get('/blog_show/(:num)', 'BlogController::blogShow/$1');
 
 //Search Functionality
 $routes->post('/search', 'BlogController::search');
