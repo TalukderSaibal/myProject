@@ -671,4 +671,16 @@ h6,
     border-radius: 50%;
 }
 
+.blog_image {
+    width: 95%;
+}
+
+.blog_image img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: auto;
+}
+
 /* Custom CSS Code End from here */
