@@ -46,9 +46,9 @@ class BlogController extends BaseController
         $data = $res->getResult();
 
         if($data){
-            echo '<pre>';
-            print_r($data);
-            die();
+            foreach($data as $row){
+                echo $row->article_title;
+            }
         }else{
             return 'No data found';
         }

@@ -54,8 +54,8 @@
 
                 <div class="menu_search">
                     <div class="search_form">
-                        <form action="<?= base_url('search') ?>" method="post">
-                            <input type="text" name="search" placeholder="Search...">
+                        <form action="" method="post" id="searchform">
+                            <input type="text" name="search" id="search" placeholder="Search...">
                             <input type="submit" name="submit" value="Search">
                         </form>
                     </div>
@@ -165,5 +165,29 @@
     </div>
 
 </div>
+<button id="click">Ok</button>
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+    $('#searchform').submit(function(e){
+        e.preventDefault();
+
+        var search = $('#search').val();
+
+        if(search === ''){
+            alert('Please enter a search string');
+        }else{
+            $.ajax({
+                url: '/search',
+                type: 'POST',
+                data: 'search='+search,
+                success: function(response){
+                    alert(response);
+                }
+            });
+        }
+    });
+});
+</script>
 
 <?=$this->endSection('content')?>
