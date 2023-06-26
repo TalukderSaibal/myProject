@@ -12,41 +12,13 @@
     <div class="blog_block">
         <div class="row">
             <div class="col-md-8">
-                <div class="blog_flex">
 
-                    <?php
+                <div id="category_blog">
+
+                </div>
+
+                <div id="blogFlex" class="blog_flex">
                     
-                    if(count($data) > 0){
-                        foreach($data as $value){?>
-                            <div class="card" style="width: 20rem; margin:10px">
-                                <img class="card-img-top" height="200px" src="<?= base_url('uploads/'. $value->article_image) ?>" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title btn btn-sm btn-primary"><?= $value->category_name ?></h5>
-                                    <h6>
-                                        <a href="<?= base_url('blog_show/'. $value->id) ?>">
-                                            <?= $value->article_title ?>
-                                        </a>
-                                    </h6>
-                                    <p class="card-text"><?= $value->article_description ?></p>
-                                    <div class="blog_card_image">
-                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAAB5CAMAAADszSiHAAAASFBMVEX39/eDg4ONjY3x8fH6+vr///9/f398fHx5eXmWlpbr6+t2dnaGhobIyMjl5eXg4ODZ2dmqqqrQ0NC2tracnJy/v7+kpKSwsLDfxd+7AAADiElEQVR4nO2b2XLbMAxFSQkktVm75P//09KKG9udVARi6jLt6D758Qw2gQCs1KlTp/4HEZHxog/5H6mBbkgq78dlGta13DQP01iptGRE/TVzReGctVZvstYVbm0TmozUaIs7zatsPbcmFVU1u6+YPsD0ksaT1NovLfVbRZnCYNT/3VS/PTnC7UVVs2urTW5Bc5ksTOUduWD9SJeCQaU12I95xqLSusmBVNTxjOXdeAG60UyhNPxUiaNSVHKptG5x0VU1bCqHC3rqONXhjjXBgotGdmhpO8OwBBHvhcMa+E7UNYpKmfJnYnFr/IbVoVLR1BKsHlYhJFgFCotyCZa7oLCqE+ufx1L0I0NeGQEVsm5df2SVl3QQusBhtRIv4pp59sPH91srDkvQ2TjcC5ZGgbWmFfXIMKsg5G2Nqqei7tS/YFFYol4e19lI6pZ2FYbKvxMFVMDnvqBuaTvAmmYzC57VsMaGPXW7CddB+I8iH8sBB1z84LIDEIvYHRdwkHSbynP75gZVtTYZprXcFToCp5HJVWE3BjRwkhG/X6E1bC8L3mLcsLpw1GfIZcFdJthGIPv4B1ZwJghrAF+wgs1ggfscPkR9yFrQPdSDK+BFNyXaVu/vWLJERwdm2jOXxc1yX0XjbqVPEfAbVr+LBVzZvWK1e4W+adNQKVXtVa4mlRPVvOdD5GTrRbvG8l0NuNe6yyz7WKnKaegRm6KvoTy4SK/xN0nUuvDYJitzcCufszawbsZSKeZeuEA+yEzHupO62ws1DKSJcVP2yZVBqj2ZseTPa7ysu9LhnjRt5iRz5s1gesmPBCPKLwL/PYFlS0UH+ZJMN1mR/57B3NAf4EuiapS771nWNbFNRqodMskw/msVzdCrWGTe9peyfsdQD9k68+EfAYxUN9i3vPcnmVv7NxPTG3ycGd9kKZg32fd96VPv6r6bevsqvMm+lZjvp96+tsSUfi9J9WuE1NuXa+aLJDFJLU2k1NuXLeyV3SlSe7ihnsgct8MITYgiizkGC8/T4op5VU8XnAtvYk5+ZRvyCCpZwSU6K40h3rqKu2aKJubcUHLMFkOsf7gEZnwHyGaMmKfAIOYAcS7iOKuvyGLduwj+aBFJnElYDqfSOjxBkdw4RJMNVi7JRUg0hYNLdjMWSeH/txh8xGvGZzENVhaKrRNLhpUg5G0Ya80SKHxAmCdREOvUqVMJ9AsYujF1/ZStTQAAAABJRU5ErkJggg==" alt="">
-                                        <div class="blog_card_title">
-                                            <h4>Admin/Admin</h4>
-                                            <p>
-                                                <span>Oct 15, 2022 03:14 PM</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    <?php }
-                    } else{ ?>
-                        <div>
-                            <p>No data found</p>
-                        </div>
-                    <?php }
-                    
-                    ?>
                 </div>
             </div>
 
@@ -59,6 +31,10 @@
                             <input type="submit" name="submit" value="Search">
                         </form>
                     </div>
+                </div>
+
+                <div id="serachMenu">
+
                 </div>
 
                 <div class="social_icon">
@@ -89,27 +65,20 @@
                         <h2>Catgeories</h2>
                     </div>
 
-                    <div class="categories_style">
-                        File Upload
-                        <div class="icon_div">
-                            <i class="fa fa-angle-right"></i>
+                    <?php
+                    
+                    foreach($data1 as $value1){ ?>
+                        <div class="categories_style">
+                            <a href="" class="categoryButton" data-category-id="<?= $value1->id ?>">
+                                <?= $value1->category_name ?>
+                                <div class="icon_div">
+                                    <i class="fa fa-angle-right"></i>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-
-                    <div class="categories_style">
-                        Movie Sharing
-                        <div class="icon_div">
-                            <i class="fa fa-angle-right"></i>
-                        </div>
-                    </div>
-
-                    <div class="categories_style">
-                        Music Sharing
-                        <div class="icon_div">
-                            <i class="fa fa-angle-right"></i>
-                        </div>
-                    </div>
-
+                    <?php }
+                    
+                    ?>
                 </div>
 
                 <div class="article_blog">
@@ -165,7 +134,7 @@
     </div>
 
 </div>
-<button id="click">Ok</button>
+
 <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 <script>
 $(document).ready(function(){
@@ -182,12 +151,64 @@ $(document).ready(function(){
                 type: 'POST',
                 data: 'search='+search,
                 success: function(response){
-                    alert(response);
+                    $('#serachMenu').html(response);
                 }
             });
         }
     });
 });
+</script>
+
+
+<script>
+    $(document).ready(function(){
+        $.ajax({
+            url:'/show-blog',
+            type: 'GET',
+            dataType: 'json',
+            success: function(resposne){
+                var blog = '<div class="card" style="width: 20rem; margin:10px">';
+                for(var i = 0; i < resposne.length; i++){
+                    blog = blog + '<img class="card-img-top" height="200px" src="'+ resposne[i].articleImage+'" alt="Card image cap">';
+                    blog = blog + '<div class="card-body">';
+                    blog = blog + '<h5 class="card-title btn btn-sm btn-primary">'+ resposne[i].category_name +'</h5>';
+                    blog = blog + '<h6><a href="">'+ resposne[i].articleTitle +'</a></h6>';
+                    blog = blog + '<p class="card-text">'+ resposne[i].articleDescription +'</p>';
+                    blog = blog + '<div class="blog_card_image">';
+                    blog = blog + '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAAB5CAMAAADszSiHAAAASFBMVEX39/eDg4ONjY3x8fH6+vr///9/f398fHx5eXmWlpbr6+t2dnaGhobIyMjl5eXg4ODZ2dmqqqrQ0NC2tracnJy/v7+kpKSwsLDfxd+7AAADiElEQVR4nO2b2XLbMAxFSQkktVm75P//09KKG9udVARi6jLt6D758Qw2gQCs1KlTp/4HEZHxog/5H6mBbkgq78dlGta13DQP01iptGRE/TVzReGctVZvstYVbm0TmozUaIs7zatsPbcmFVU1u6+YPsD0ksaT1NovLfVbRZnCYNT/3VS/PTnC7UVVs2urTW5Bc5ksTOUduWD9SJeCQaU12I95xqLSusmBVNTxjOXdeAG60UyhNPxUiaNSVHKptG5x0VU1bCqHC3rqONXhjjXBgotGdmhpO8OwBBHvhcMa+E7UNYpKmfJnYnFr/IbVoVLR1BKsHlYhJFgFCotyCZa7oLCqE+ufx1L0I0NeGQEVsm5df2SVl3QQusBhtRIv4pp59sPH91srDkvQ2TjcC5ZGgbWmFfXIMKsg5G2Nqqei7tS/YFFYol4e19lI6pZ2FYbKvxMFVMDnvqBuaTvAmmYzC57VsMaGPXW7CddB+I8iH8sBB1z84LIDEIvYHRdwkHSbynP75gZVtTYZprXcFToCp5HJVWE3BjRwkhG/X6E1bC8L3mLcsLpw1GfIZcFdJthGIPv4B1ZwJghrAF+wgs1ggfscPkR9yFrQPdSDK+BFNyXaVu/vWLJERwdm2jOXxc1yX0XjbqVPEfAbVr+LBVzZvWK1e4W+adNQKVXtVa4mlRPVvOdD5GTrRbvG8l0NuNe6yyz7WKnKaegRm6KvoTy4SK/xN0nUuvDYJitzcCufszawbsZSKeZeuEA+yEzHupO62ws1DKSJcVP2yZVBqj2ZseTPa7ysu9LhnjRt5iRz5s1gesmPBCPKLwL/PYFlS0UH+ZJMN1mR/57B3NAf4EuiapS771nWNbFNRqodMskw/msVzdCrWGTe9peyfsdQD9k68+EfAYxUN9i3vPcnmVv7NxPTG3ycGd9kKZg32fd96VPv6r6bevsqvMm+lZjvp96+tsSUfi9J9WuE1NuXa+aLJDFJLU2k1NuXLeyV3SlSe7ihnsgct8MITYgiizkGC8/T4op5VU8XnAtvYk5+ZRvyCCpZwSU6K40h3rqKu2aKJubcUHLMFkOsf7gEZnwHyGaMmKfAIOYAcS7iOKuvyGLduwj+aBFJnElYDqfSOjxBkdw4RJMNVi7JRUg0hYNLdjMWSeH/txh8xGvGZzENVhaKrRNLhpUg5G0Ya80SKHxAmCdREOvUqVMJ9AsYujF1/ZStTQAAAABJRU5ErkJggg==" alt="">';
+                    blog = blog + '<div class="blog_card_title">';
+                    blog = blog + '<h4>Admin/Admin</h4>';
+                    blog = blog + '<p><span>Oct 15, 2022 03:14 PM</span></p>';
+                    blog = blog + '</div>';
+                    blog = blog + '</div>';
+                    blog = blog + '</div>';
+                }
+                blog = blog + '</div>';
+                $('#blogFlex').html(blog);
+            }
+        })
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('.categoryButton').click(function(e) {
+            e.preventDefault();
+            var categoryId = $(this).data('category-id');
+            var category_blog = $('#category_blog');
+            if(categoryId != null){
+                $.ajax({
+                    url: '/category_show',
+                    type: 'GET',
+                    data: 'categoryId='+categoryId,
+                    success: function(resposne){
+                        category_blog.html(resposne);
+                        $('#blogFlex').hide();
+                    }
+                })
+            }
+        })
+    });
 </script>
 
 <?=$this->endSection('content')?>

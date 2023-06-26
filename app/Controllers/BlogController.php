@@ -15,15 +15,21 @@ class BlogController extends BaseController
     }
     public function index(){
 
-        $query = 'SELECT * FROM articletbl
-        LEFT JOIN categories ON articletbl.article_language = categories.language_id';
+        $query = 'SELECT articletbl.id AS articleId, articletbl.article_title AS articleTitle, articletbl.article_content AS articleContent, articletbl.article_image AS articleImage, articletbl.article_description AS articleDescription, categories.* FROM articletbl
+        JOIN categories ON articletbl.id = categories.id';
+
+        $query1 = 'SELECT id,category_name FROM categories';
 
         $result = $this->db->query($query);
 
+        $result1 = $this->db->query($query1);
+
         $data = $result->getResult();
 
+        $data1 = $result1->getResult();
+
         if(count($data)){
-            return view('blog', ['data' => $data]);
+            return view('blog', ['data' => $data, 'data1' => $data1]);
         }
     }
 
@@ -47,11 +53,51 @@ class BlogController extends BaseController
 
         if($data){
             foreach($data as $row){
-                echo $row->article_title;
+                $articleTitle = $row->article_title;
+                $categoryName = $row->category_name;
+                $title = '<div style="background:green; color:white;">'. 'Article Title : ' .$articleTitle .'</div>';
+                $name = '<div style="background:aqua; color:white;">'. 'Category Name : '. $categoryName .'</div>';
+
+                echo $title . $name;
             }
         }else{
             return 'No data found';
         }
 
+    }
+
+    public function showBlog(){
+        $query = 'SELECT articletbl.id AS articleId, articletbl.article_title AS articleTitle, articletbl.article_content AS articleContent, articletbl.article_image AS articleImage, articletbl.article_description AS articleDescription, categories.* FROM articletbl
+        JOIN categories ON articletbl.id = categories.id';
+
+        $result = $this->db->query($query);
+
+        $data = $result->getResult();
+
+        echo json_encode($data);
+    }
+
+    public function categoryShow(){
+        $categoryId = $this->request->getGet('categoryId');
+
+        $query = 'SELECT * FROM categories
+        JOIN articletbl on categories.id = articletbl.article_category
+        WHERE categories.id='.$categoryId;
+
+        $result = $this->db->query($query);
+        $data = $result->getResult();
+        if($data){
+            foreach($data as $row){
+                $articleTitle = $row->article_title;
+                $articleImage = $row->article_image;
+                $articleContent = $row->article_content;
+                $articleDescription = $row->article_description;
+                $div = '<div style="background:aqua">'. $articleTitle .'</div>';
+                $image = '<img src="articleImage/'.$articleImage.'"</img>';
+                $content = '<div>'. $articleContent. '</div>';
+                $content = '<div>'. $articleDescription. '</div>';
+                echo $image .$div . $content . $content;
+            }
+        }
     }
 }

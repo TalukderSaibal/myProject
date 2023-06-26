@@ -37,6 +37,10 @@ $routes->get('/blog_show/(:num)', 'BlogController::blogShow/$1');
 //Search Functionality
 $routes->post('/search', 'BlogController::search');
 
+
+$routes->get('/show-blog', 'BlogController::showBlog');
+$routes->get('/category_show', 'BlogController::categoryShow');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
