@@ -52,14 +52,7 @@ class BlogController extends BaseController
         $data = $res->getResult();
 
         if($data){
-            foreach($data as $row){
-                $articleTitle = $row->article_title;
-                $categoryName = $row->category_name;
-                $title = '<div style="background:green; color:white;">'. 'Article Title : ' .$articleTitle .'</div>';
-                $name = '<div style="background:aqua; color:white;">'. 'Category Name : '. $categoryName .'</div>';
-
-                echo $title . $name;
-            }
+            echo json_encode($data);
         }else{
             return 'No data found';
         }

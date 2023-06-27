@@ -17,9 +17,7 @@
 
                 </div>
 
-                <div id="blogFlex" class="blog_flex">
-                    
-                </div>
+                <div id="blogFlex" class="row"></div>
             </div>
 
             <div class="col-md-4">
@@ -150,8 +148,13 @@ $(document).ready(function(){
                 url: '/search',
                 type: 'POST',
                 data: 'search='+search,
+                dataType: 'json',
                 success: function(response){
-                    $('#serachMenu').html(response);
+                    var blog = '';
+                    for(var i = 0; i < response.length; i++){
+                        blog = blog + '<h6><a href="">'+ resposne[i].article_title +'</a></h6>';
+                    }
+                    $('#serachMenu').html(blog);
                 }
             });
         }
@@ -167,9 +170,12 @@ $(document).ready(function(){
             type: 'GET',
             dataType: 'json',
             success: function(resposne){
-                var blog = '<div class="card" style="width: 20rem; margin:10px">';
+                var blog = '';
                 for(var i = 0; i < resposne.length; i++){
-                    blog = blog + '<img class="card-img-top" height="200px" src="'+ resposne[i].articleImage+'" alt="Card image cap">';
+                    blog = blog + '<div class="col-md-4">';
+                    blog = blog + '<div class="card">';
+
+                    blog = blog + '<img class="card-img-top" height="200px" src="articleImage/'+ resposne[i].articleImage+'" alt="Card image cap">';
                     blog = blog + '<div class="card-body">';
                     blog = blog + '<h5 class="card-title btn btn-sm btn-primary">'+ resposne[i].category_name +'</h5>';
                     blog = blog + '<h6><a href="">'+ resposne[i].articleTitle +'</a></h6>';
@@ -182,8 +188,10 @@ $(document).ready(function(){
                     blog = blog + '</div>';
                     blog = blog + '</div>';
                     blog = blog + '</div>';
+                    blog = blog + '</div>';
+                    blog = blog + '</div>';
                 }
-                blog = blog + '</div>';
+                
                 $('#blogFlex').html(blog);
             }
         })
