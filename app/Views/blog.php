@@ -152,7 +152,7 @@ $(document).ready(function(){
                 success: function(response){
                     var blog = '';
                     for(var i = 0; i < response.length; i++){
-                        blog = blog + '<h6><a href="">'+ resposne[i].article_title +'</a></h6>';
+                        blog = blog + '<h6><a href="">'+ response[i].article_title +'</a></h6>';
                     }
                     $('#serachMenu').html(blog);
                 }
